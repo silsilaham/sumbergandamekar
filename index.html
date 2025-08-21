@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile | PT Sumber Ganda Mekar</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- Variabel Warna untuk Kemudahan Kustomisasi --- */
+        :root {
+            --primary-color: #2c3e50; /* Biru Tua Korporat */
+            --secondary-color: #27ae60; /* Hijau untuk Agribisnis & Lingkungan */
+            --accent-color: #e67e22; /* Oranye untuk Konstruksi */
+            --background-color: #f4f6f9;
+            --text-color: #34495e;
+            --light-text-color: #ffffff;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
+        }
+
+        /* --- Gaya Dasar --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.8rem;
+            position: relative;
+        }
+
+        /* Garis bawah judul */
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Header & Navigasi --- */
+        .navbar {
+            background: rgba(44, 62, 80, 0.9);
+            backdrop-filter: blur(10px);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text-color);
+            text-decoration: none;
+        }
+        
+        .navbar .logo span {
+            color: var(--secondary-color);
+        }
+
+        .navbar nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar nav ul li {
+            margin-left: 25px;
+        }
+
+        .navbar nav ul li a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .navbar nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Menu Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .menu-toggle .bar {
+            height: 3px;
+            width: 28px;
+            background: white;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            /* GAMBAR HERO DIGANTI DENGAN SPANDUK PERUSAHAAN */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('20200331_104838.jpg') no-repeat center center/cover;
+            height: 100vh;
+            color: var(--light-text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--light-text-color);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--light-text-color);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        .btn:hover {
+            background: #229954;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
+        }
+
+        /* --- Tentang Kami --- */
+        #about {
+            background: #ffffff;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            object-fit: cover;
+            height: 100%;
+        }
+        
+        .vision-mission {
+            margin-top: 30px;
+            padding-left: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .vision-mission h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .vision-mission ul {
+            list-style-position: inside;
+        }
+        
+        /* --- Profil Pimpinan --- */
+        #leadership {
+            background-color: var(--background-color);
+        }
+        .leadership-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: center;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+        .leadership-content img {
+            width: 100%;
+            border-radius: 50%;
+            border: 5px solid var(--secondary-color);
+        }
+        .leadership-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        .leadership-text h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        .leadership-text p {
+            font-style: italic;
+        }
+
+
+        /* --- Layanan --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 35px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 5px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card.rongsok:hover { border-bottom-color: var(--primary-color); }
+        .service-card.konstruksi:hover { border-bottom-color: var(--accent-color); }
+        .service-card.pakan:hover { border-bottom-color: var(--secondary-color); }
+
+        .service-card .icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .service-card .icon.rongsok { color: var(--primary-color); }
+        .service-card .icon.konstruksi { color: var(--accent-color); }
+        .service-card .icon.pakan { color: var(--secondary-color); }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        /* --- Keunggulan --- */
+        #why-us {
+            background: #ffffff;
+        }
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .why-us-item {
+            display: flex;
+            align-items: flex-start;
+            background: var(--background-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            transition: background 0.3s ease;
+        }
+        .why-us-item:hover {
+            background: #e9ecef;
+        }
+        .why-us-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-right: 20px;
+            width: 50px;
+        }
+        .why-us-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        /* --- Galeri --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            cursor: pointer;
+            height: 250px;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        /* --- Modal Galeri --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover, .close:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+
+        /* --- Kontak --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-info ul {
+            list-style: none;
+        }
+        .contact-info li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .contact-info i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-right: 20px;
+            width: 40px;
+            text-align: center;
+        }
+        .map-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 100%;
+            min-height: 350px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        /* --- Desain Responsif --- */
+        @media (max-width: 992px) {
+            .about-content, .contact-grid, .leadership-content {
+                grid-template-columns: 1fr;
+            }
+            .about-content img {
+                order: -1; /* Pindahkan gambar ke atas pada mode mobile */
+                margin-bottom: 30px;
+                height: 300px;
+            }
+            .leadership-content img {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto 20px;
+            }
+            .leadership-content {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+
+            .navbar nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                height: 100vh;
+                background: var(--primary-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar nav.active {
+                transform: translateX(0);
+            }
+            .navbar nav ul {
+                flex-direction: column;
+            }
+            .navbar nav ul li {
+                margin: 20px 0;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-7px, 6px);
+            }
+            .menu-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-7px, -6px);
+            }
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & NAVIGASI -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">PT Sumber Ganda <span>Mekar</span></a>
+            <nav id="nav-links">
+                <ul>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#leadership">Pimpinan</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#why-us">Keunggulan</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Solusi Terintegrasi untuk Industri, Konstruksi, dan Agribisnis</h1>
+            <p>PT Sumber Ganda Mekar adalah mitra terpercaya Anda yang menyediakan layanan jual beli rongsok, konstruksi profesional, dan pakan ternak berkualitas tinggi.</p>
+            <a href="#contact" class="btn">Hubungi Kami Sekarang</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- TENTANG KAMI -->
+        <section id="about">
+            <div class="container">
+                <h2>Tentang Perusahaan</h2>
+                <div class="about-content">
+                    <div>
+                        <img src="20221124_163741.jpg" alt="Tim PT Sumber Ganda Mekar di kantor">
+                    </div>
+                    <div>
+                        <h3>Mitra Pertumbuhan Berkelanjutan</h3>
+                        <p>
+                            Didirikan dengan semangat untuk memberikan kontribusi nyata, <strong>PT Sumber Ganda Mekar</strong> memulai perjalanannya dari bisnis jual beli rongsok, dengan komitmen pada pengelolaan limbah yang bertanggung jawab. 
+                        </p>
+                        <p>
+                            Seiring tumbuhnya kepercayaan dari para mitra, kami melakukan diversifikasi usaha ke sektor konstruksi dan produksi pakan ternak. Dengan tiga pilar bisnis yang saling mendukung, kami hadir untuk memberikan solusi yang komprehensif, andal, dan berkualitas.
+                        </p>
+                        <div class="vision-mission">
+                            <h3>Visi</h3>
+                            <p>Menjadi perusahaan multi-sektor terdepan yang dikenal karena integritas, kualitas, dan inovasi untuk mendukung pembangunan berkelanjutan.</p>
+                            <h3>Misi</h3>
+                            <ul>
+                                <li>Menyediakan layanan jual beli rongsok yang profesional dan ramah lingkungan.</li>
+                                <li>Memberikan jasa konstruksi yang unggul dalam kualitas dan ketepatan waktu.</li>
+                                <li>Memproduksi pakan ternak bernutrisi tinggi untuk meningkatkan produktivitas peternakan.</li>
+                                <li>Membangun hubungan jangka panjang yang saling menguntungkan dengan semua mitra.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BAGIAN BARU: PROFIL PIMPINAN -->
+        <section id="leadership">
+            <div class="container">
+                <h2>Profil Pimpinan</h2>
+                <div class="leadership-content">
+                    <div>
+                        <img src="maman.jpg" alt="Foto Pimpinan PT Sumber Ganda Mekar">
+                    </div>
+                    <div class="leadership-text">
+                        <h3>H. Maman Suherman</h3>
+                        <h4>Komisaris</h4>
+                        <p>"Kami percaya bahwa kesuksesan dibangun di atas fondasi kepercayaan, kerja keras, dan komitmen untuk memberikan yang terbaik bagi pelanggan dan mitra kami. Bersama, kita membangun masa depan yang lebih baik dan berkelanjutan."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYANAN / UNIT BISNIS -->
+        <section id="services">
+            <div class="container">
+                <h2>Unit Bisnis Kami</h2>
+                <div class="services-grid">
+                    <!-- Layanan 1: Rongsok -->
+                    <div class="service-card rongsok">
+                        <div class="icon rongsok"><i class="fas fa-recycle"></i></div>
+                        <h3>Jual Beli Rongsok</h3>
+                        <p>Kami melayani jual beli berbagai jenis rongsok dan limbah logam (besi, tembaga, aluminium) dengan harga kompetitif, penimbangan akurat, dan pembayaran tepat waktu.</p>
+                    </div>
+                    <!-- Layanan 2: Konstruksi -->
+                    <div class="service-card konstruksi">
+                        <div class="icon konstruksi"><i class="fas fa-hard-hat"></i></div>
+                        <h3>Jasa Konstruksi</h3>
+                        <p>Menyediakan layanan konstruksi umum, mulai dari pembangunan rumah, ruko, gudang, hingga renovasi. Tim kami berkomitmen pada kualitas, keamanan, dan penyelesaian tepat waktu.</p>
+                    </div>
+                    <!-- Layanan 3: Pakan Ternak -->
+                    <div class="service-card pakan">
+                        <div class="icon pakan"><i class="fas fa-paw"></i></div>
+                        <h3>Pakan Ternak</h3>
+                        <p>Kami memproduksi pakan ternak berkualitas dari bahan baku pilihan untuk menjamin nutrisi terbaik bagi unggas dan ruminansia, demi meningkatkan produktivitas peternakan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENGAPA MEMILIH KAMI -->
+        <section id="why-us">
+            <div class="container">
+                <h2>Mengapa Memilih Kami?</h2>
+                <div class="why-us-grid">
+                    <div class="why-us-item">
+                        <i class="fas fa-handshake"></i>
+                        <div>
+                            <h4>Profesional & Terpercaya</h4>
+                            <p>Kami menjunjung tinggi integritas dalam setiap transaksi dan proyek.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Kualitas Terjamin</h4>
+                            <p>Kami berkomitmen untuk memberikan kualitas terbaik di semua lini bisnis.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-item">
+                        <i class="fas fa-tags"></i>
+                        <div>
+                            <h4>Harga Kompetitif</h4>
+                            <p>Menawarkan harga yang bersaing tanpa mengorbankan kualitas layanan.</p>
+                        </div>
+                    </div>
+                    <div class="why-us-item">
+                        <i class="fas fa-cogs"></i>
+                        <div>
+                            <h4>Layanan Terintegrasi</h4>
+                            <p>Solusi satu atap untuk berbagai kebutuhan industri dan agribisnis Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERI -->
+        <section id="gallery">
+            <div class="container">
+                <h2>Galeri Kegiatan</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="20230707_093017.jpg" alt="Distribusi Material Konstruksi">
+                        <div class="overlay">Distribusi Material Konstruksi</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="20240504_095050.jpg" alt="Pengelolaan Rongsok">
+                        <div class="overlay">Pengelolaan Rongsok</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="20220921_121852.jpg" alt="Stok Bahan Pakan Ternak">
+                        <div class="overlay">Stok Bahan Pakan Ternak</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="20231011_091831.jpg" alt="Aneka Jenis Logam">
+                        <div class="overlay">Aneka Jenis Logam</div>
+                    </div>
+                     <div class="gallery-item">
+                        <img src="20231010_174627.jpg" alt="Proses Penimbangan Akurat">
+                        <div class="overlay">Proses Penimbangan Akurat</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="20231012_080413.jpg" alt="Administrasi Profesional">
+                        <div class="overlay">Administrasi Profesional</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAK -->
+        <section id="contact">
+            <div class="container">
+                <h2>Hubungi Kami</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Informasi Kontak</h3>
+                        <p>Kami siap membantu Anda. Jangan ragu untuk menghubungi kami melalui informasi di bawah ini atau kunjungi kantor kami.</p>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> Jl. Gedebage Selatan No.92-95, Cisaranten Kidul, Kec. Gedebage, Kota Bandung, Jawa Barat 40295</li>
+                            <li><i class="fas fa-phone"></i>  022-7536459</li>
+                            <li><i class="fas fa-envelope"></i> sumbergandamekar@gmail.com</li>
+                            <li><i class="fas fa-clock"></i> Senin - Sabtu: 08:00 - 17:00 WIB</li>
+                        </ul>
+                    </div>
+                    <div class="map-container">
+                        <!-- PETA TELAH DIPERBARUI -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.673410712217!2d107.68643187474916!3d-6.94279589306828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c2befe453ed7%3A0xb68186fe99033614!2sPT.%20Sumber%20Ganda%20Mekar!5e0!3m2!1sen!2sid!4v1692608681358!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- MODAL UNTUK GAMBAR GALERI -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PT Sumber Ganda Mekar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk menu mobile
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // JavaScript untuk Modal Galeri
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var galleryImages = document.querySelectorAll(".gallery-item img");
+        var span = document.getElementsByClassName("close")[0];
+
+        galleryImages.forEach(img => {
+            img.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
